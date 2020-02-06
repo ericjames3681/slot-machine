@@ -3,6 +3,12 @@
 
 ## How it will play onscreen
     A player will have an inviting welcome screen, displaying the resting image of a slot machine screen and a brief example of what a win or "jackpot" would look like. State will be initialized to null in terms of player's money but the winning combos and their corresponding multipliers will be constant in state. Player will input his amount to be wagered and this be will be continually updated with each click of spin, subtracting the individual wager. It will ALWAYS SUBTRACT, adding will happen conditionally. This will be rendered onscreen after each "spin". Animation of randomly generated rows of images will display but stop in rows after a short time, spin bar will be animated as well.
+    https://imgur.com/Z7FcZ8T
+    [Imgur](https://i.imgur.com/Z7FcZ8T.jpg)
+
+
+    https://imgur.com/XfLPWAt
+    [Imgur](https://i.imgur.com/XfLPWAt.jpg)
     
 ## Wins
     IF player hits on a winning combo, his running total of avail money to be gambled will increase. To heighten user experience, screen will have various screen animations to be triggered with various intensity depending on how big the win.
