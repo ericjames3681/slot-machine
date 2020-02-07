@@ -2,7 +2,7 @@
 
 ## The Game
 
-    A fun and addictive game, requires no skill but demands your attention. If you haven't played the slots, or it's been awhile, allow me paraphrase: a player places a wager and pulls a lever or pushes a button and a series of spinning wheels (typically 3) will spin vertically. As the wheel stops, a random pattern will emerge. If the middle row align a series of identical images, the player will win. Some series appear more or less frequently by design, and will multiply a player's winning return at corresponding ratios. The rarest and highest pay out? **JACKPOT**!
+A fun and addictive game, requires no skill but demands your attention. If you haven't played the slots, or it's been awhile, allow me paraphrase: a player places a wager and pulls a lever or pushes a button and a series of spinning wheels (typically 3) will spin vertically. As the wheel stops, a random pattern will emerge. If the middle row align a series of identical images, the player will win. Some series appear more or less frequently by design, and will multiply a player's winning return at corresponding ratios. The rarest and highest pay out? **JACKPOT**!
 
 ## How it will play onscreen
 
