@@ -1,36 +1,36 @@
-/*----- constants -----*/
+// /*----- constants -----*/
+const state = {
+	money: {
+		player: 0,
+		bet: 0,
+		win: 0
+	}
+}
 const slot123 = {
-    slot1: {
-        bell: 'bell.png',
-        cherries: 'cherries.png',
-        leslie: 'leslie.png'
+    1: {
+      imgUrl: 'leslie.png'
     },
-    slot2: {
-        bell: 'bell.png',
-        cherries: 'cherries.png',
-        leslie: 'leslie.png'
+    2: {
+      imgUrl: 'cherries.png'
     },
-    slot3: {
-        bell: 'bell.png',
-        cherries: 'cherries.png',
-        leslie: 'leslie.png'
+    3: {
+        imgUrl: 'bell.png'
     }
-    
 };
 // var imagesArray = ['bell.png', 'cherries.png', 'leslie.png']
 
 // console.log(imagesArray[0]);
 
-const goAudio = new Audio('http://soundbible.com/mp3/shooting_star-Mike_Koenig-1132888100.mp3');
-/*----- app's state (variables) -----*/
+// const goAudio = new Audio('http://soundbible.com/mp3/shooting_star-Mike_Koenig-1132888100.mp3');
+// /*----- app's state (variables) -----*/
 
-let isWinner = false;
-let total = 0;
+var images = ['cherries.png', 'bell.png', 'leslie.png'];
+// let isWinner, total, betMinus, betPlus;
 
 
 
 /*----- cached element references -----*/
-// const pScoreEl = document.querySelector('#player h2');
+// const pScreen1 = document.querySelector('#player h2');
 // const cScoreEl = document.querySelector('#computer h2');
 // const tScoreEl = document.querySelector('#middle h2');
 
@@ -40,19 +40,19 @@ let total = 0;
 // const countdownEl = document.querySelector('#middle div');
 
 // var x = document.createElement("img");
-total = document.getElementById("input".value);
-console.log(total);
-goAudio.play();
+
+
 
 
 /*----- event listeners -----*/
 
-document.querySelector('button').addEventListener('click', init);
+document.querySelector('button').addEventListener('click', render);
 
 
 /*----- functions -----*/
 function init () {
     render();
+    return;
 }
 
 function render() {
@@ -61,32 +61,34 @@ function render() {
     renderSpin();
     if (isWinner === true)
         renderWin();
-
+        renderCurrentDollars();
+    return;
 }
-
-function randomizeImg(obj) {
-
-    var keys = Object.keys(obj)
-    return obj[keys[ keys.length * Math.random() << 0]];
-
+function renderSlot1 () {
+    for (let i = 1; i <= 3; i++){
+        renderRandomImage(i);
+        slot123.i.imgUrl = renderRandomImage();
+    }
 }
-
+function randomizeImg() {
+    var image = images[Math.floor(Math.random()*images.length)];
+    return image;
+}
+function renderRandomImage(x){
+    var htmlImg = document.getElementById('randomImage' + x);
+    htmlImg.src = randomizeImg();
+}
+renderSlot1();
 
 function renderCurrentDollars() {
-
+    return;
 }
 
 function renderSpin() {
-
+    return;
 }
 
 function renderWin() {
-
+    return;
 }
-
-
-
-
-
-
 
