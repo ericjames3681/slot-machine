@@ -10,25 +10,28 @@
     <script defer src="js/main.js"></script>
 </head>
 <body>
-    <header>Slot-Machine</header>
-    <h1 id="current-balance">0</h1>
+    <header>Eric's Slot-Machine</header>
+    <h1 id="current-balance"></h1>
     
     <main class="container">
-        
-                <div id="slot1">
-                    <img id="randomImage1">    
-                </div>
-                <div id="slot2">
-                    <img id="randomImage2">
-                </div>
-                <div id="slot3">
-                    <img id="randomImage3">
-                </div>
-            </main>
-            <button id="spin">SPIN!</button>
-        <input type="number" id="input" placeholder="PLACE YOUR WAGER!" name="quantity" min="1" >
-        <input type="submit">
-    <script src="js/main.js"></script>
+            <div id="slot1">
+                <img id="randomImage1">    
+            </div>
+            <div id="slot2">
+                <img id="randomImage2">
+            </div>
+            <div id="slot3">
+                <img id="randomImage3">
+            </div>
+        </main>
+        <button id="spin">SPIN!</button>
+   
+        <form id="frm1">
+            <input type="number" name="input" value="" min="1"><br>
+            <button onclick="getDollars()"></button>
+        </form> 
+<script src="js/main.js"></script>
 </body>
 </html>
+        
 
