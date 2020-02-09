@@ -46,7 +46,7 @@ var images = ['cherries.png', 'bell.png', 'leslie.png'];
 
 /*----- event listeners -----*/
 
-document.querySelector('button').addEventListener('click', render);
+document.querySelector('button').addEventListener('click', spin);
 
 
 /*----- functions -----*/
@@ -56,18 +56,16 @@ function init () {
 }
 
 function render() {
-    randomizeImg();
-    renderCurrentDollars();
-    renderSpin();
+    spin();
     if (isWinner === true)
         renderWin();
         renderCurrentDollars();
     return;
 }
-function renderSlot1 () {
+function renderSlots () {
     for (let i = 1; i <= 3; i++){
         renderRandomImage(i);
-        slot123.i.imgUrl = renderRandomImage();
+
     }
 }
 function randomizeImg() {
@@ -78,7 +76,11 @@ function renderRandomImage(x){
     var htmlImg = document.getElementById('randomImage' + x);
     htmlImg.src = randomizeImg();
 }
-renderSlot1();
+
+function spin() {
+    renderSlots();
+    renderCurrentDollars();
+}
 
 function renderCurrentDollars() {
     return;
