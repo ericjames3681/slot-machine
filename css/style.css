@@ -1,11 +1,10 @@
- html { 
+html { 
     background-image: linear-gradient(to bottom right, rgb(105, 212, 105), forestgreen);
     font-family: 'Poiret One', cursive;
 }
 header {
     font-size: 150px;
     margin: 0 auto;
-    font-size: larger;
     text-align: center;
 }
 h1 {
@@ -14,29 +13,35 @@ h1 {
     text-align: center;
 }
 .container {
-    position: sticky;
+    background-size: contain;
+    height: 200px;
+    width: 550px;
+    margin: 0 auto;
     background-color: gainsboro;
-    width: 50%;
     display: grid;
     border: 5px solid black;
     border-radius: 15px;
-
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 32% 33% 32%;
+    column-gap: 1%;   
 }
 div {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    font-size: 20px;
+    padding: 40px;
+    border-radius: 15px;
 }
 img {
-    height: 120%; 
-    width: 120%; 
+    height: 100px; 
+    width: 100px; 
 }
-button:hover {
-    background-color: black;
+#frm1 {
     color: white;
-  }
+    font-family: 'Poiret One', cursive;
+    margin: 0 auto;
+}
 #input {
-    justify-content: center;
+    font-family: 'Poiret One', cursive;
+
+}
+button {
     font-family: 'Poiret One', cursive;
 }

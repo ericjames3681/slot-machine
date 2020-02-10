@@ -1,6 +1,7 @@
-// /*----- constants -----*/
+//CONSTANTS
 const images = ['cherries.png', 'bell.png', 'leslie.png'];
-const betPlus = 5;
+const jackpot = 10;
+const win = 7;
 const bet = 5;
 
 // console.log(imagesArray[0]);
@@ -8,12 +9,8 @@ const bet = 5;
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
 // /*----- app's state (variables) -----*/
 var state = {
-    money: {
-        player: 0,
-        bet: 0,
-        win: 0
-    }
-}
+    money: 0
+};
 var slot123 = {
     '1': {
         imgUrl: 'leslie.png'
@@ -26,13 +23,14 @@ var slot123 = {
     }
 };
 
-let total;
+let total = 440;
 
 
 
 /*----- cached element references -----*/
-totalMessage = document.getElementById('current-balance').innerHTML;
-
+var totalMessage = document.getElementById('current-balance');
+state.money = document.getElementById('input').value;
+console.log(totalMessage);
 // const pScreen1 = document.querySelector('#player h2');
 // const cScoreEl = document.querySelector('#computer h2');
 // const tScoreEl = document.querySelector('#middle h2');
@@ -49,23 +47,23 @@ totalMessage = document.getElementById('current-balance').innerHTML;
 
 /*----- event listeners -----*/
 
-document.querySelector('button').addEventListener('click', render);
-// document.getElementById('frm1').addEventListener('click', getDollars);
+document.querySelector('button').addEventListener('click', init);
+// document.querySelector('submit').addEventListener('click', getDollars);
 
 
 /*----- functions -----*/
 function init () {
-    totalMessage = 'Welcome!';
+    totalMessage.innerHTML = 'Welcome!';
     render();
     return;
 }
 
 function render() {
+    getDollars();
     spin();
-    // getDollars();
     goAudio.play();
-    total -= 5;
-    // renderCurrentDollars();
+    state.money.player -= 5;
+    renderCurrentDollars();
     if (total >= 5) {
         spin();
         if (checkForWin() === true) {
@@ -94,14 +92,14 @@ function renderRandomImage(x){
     slot123[x]= htmlImg.src;
 }
 
-// function getDollars() {
-//     total = document.querySelector('input').value;
-//     renderCurrentDollars();
-// }
+function getDollars() {
+    state.money += document.getElementById('input').value;
+    totalMessage.innerHTML = '$ ' + state.money;
+}
 
-// function renderCurrentDollars() {
-//     totalMessage = '$' + total;
-// }
+function renderCurrentDollars() {
+    totalMessage.innerHTML = '$' + state[money];
+}
 
 function renderWin() {
     totalMessage.innerText = 'Winner!!!!!';
