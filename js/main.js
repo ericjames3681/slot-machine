@@ -7,11 +7,12 @@ const bet = 5;
 // console.log(imagesArray[0]);
 
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
-const reelAudio = new Audio('415074__aghirlandaio__slot-machine-reels-sound.m4a');
+const reelAudio = new Audio('337079__tieswijnen__bicycle-spokes.aiff');
 // /*----- app's state (variables) -----*/
 var state = {
     money: 0,
-    bet: 0
+    bet: 0,
+    betMax: 0
 };
 var slot123 = {
     '1': {
@@ -37,14 +38,16 @@ var dollarInput = document.getElementById('input');
 /*----- event listeners -----*/
 
 document.getElementById('spin').addEventListener('click', render);
+document.getElementById('spinMax').addEventListener('click', renderMax);
 document.getElementById('numberBtn').addEventListener('click', getDollars);
+
 
 
 /*----- functions -----*/
 function init () {
     totalMessage.innerText= 'Welcome!';
     console.log(totalMessage);
-    render();
+
 }
 
 function render() {
@@ -56,14 +59,29 @@ function render() {
         totalMessage.innerText= 'Min bet is $5.00.';
     }
 }
+function renderMax() {
+
+    if (state.money >= 20) {
+        spinMax();
+    }
+    else {
+        totalMessage.innerText= 'Max bet is $20.00.';
+    }
+}
 function spin() {
     state.bet = 0;
     state.money -= 5;
-    state.bet += 5;
-    reelAudio.play(3);
-    renderCurrentDollars();
+    state.bet = 5;
     goAudio.play();
-    reelAudio.play();
+    renderCurrentDollars();
+    renderSlots();
+}
+function spinMax() {
+    state.betMax = 0;
+    state.money -= 20;
+    state.betMax = 20;
+    goAudio.play();
+    renderCurrentDollars();
     renderSlots();
 }
 function renderSlots () {
@@ -89,10 +107,10 @@ function handleTime(time, index) {
         if ( checkForWin() === true ) {
             renderWin();
         }
-        totalMessage.innerText = 'SPINNING...';
-        goAudio.pause();
+        // goAudio.pause();
         renderCurrentDollars();
     }, Number(time));
+    totalMessage.innerText = 'SPINNING...';
 }
 
 function getDollars() {
@@ -107,8 +125,12 @@ function renderCurrentDollars() {
 
 function renderWin() {
     totalMessage.innerText = 'Winner!!!!!';
-    state.bet *= 20;
+    state.bet *= 10;
+    state.betMax *= 20;
     state.money += state.bet;
+    state.money += state.betMax;
+    state.bet = 0;
+    state.betMax = 0;
 }
 
 function checkForWin() {
