@@ -9,7 +9,7 @@ const bet = 5;
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
 // /*----- app's state (variables) -----*/
 var state = {
-    money: 0
+    money: 40
 };
 var slot123 = {
     '1': {
@@ -28,8 +28,7 @@ let total = 440;
 
 
 /*----- cached element references -----*/
-var totalMessage = document.getElementById('current-balance');
-state.money = document.getElementById('input').value;
+var totalMessage = document.getElementById('input');
 console.log(totalMessage);
 // const pScreen1 = document.querySelector('#player h2');
 // const cScoreEl = document.querySelector('#computer h2');
@@ -47,22 +46,23 @@ console.log(totalMessage);
 
 /*----- event listeners -----*/
 
-document.querySelector('button').addEventListener('click', init);
+document.querySelector('button').addEventListener('click', spin);
 // document.querySelector('submit').addEventListener('click', getDollars);
 
 
 /*----- functions -----*/
 function init () {
-    totalMessage.innerHTML = 'Welcome!';
-    render();
+    totalMessage.innerText= 'Welcome!';
+    // render();
+    state[money] = totalMessage;    
+
     return;
 }
 
 function render() {
     getDollars();
     spin();
-    goAudio.play();
-    state.money.player -= 5;
+    state[money] -= 5;
     renderCurrentDollars();
     if (total >= 5) {
         spin();
@@ -72,15 +72,16 @@ function render() {
         };
     };
 }
-function renderSlots () {
-    for (let i = 1; i <= 3; i++){
-        renderRandomImage(i);
-//incremental timer
-    }
-}
 function spin() {
+    goAudio.play();
     renderSlots();
     renderCurrentDollars();
+}
+function renderSlots () {
+    for (let i = 1; i <= 3; i++){
+        //two args time/index
+        handleTime('2,000', i);
+    }
 }
 function randomizeImg() {
     var image = images[Math.floor(Math.random()*images.length)];
@@ -90,6 +91,13 @@ function renderRandomImage(x){
     var htmlImg = document.getElementById('randomImage' + x);
     htmlImg.src = randomizeImg();
     slot123[x]= htmlImg.src;
+
+}
+//independent function that handleTimefunction handleTime(time) {
+function handleTime(time, index) {
+    setTimeout(() => {
+        renderRandomImage(index);
+    }, Number(time));
 }
 
 function getDollars() {
@@ -98,7 +106,7 @@ function getDollars() {
 }
 
 function renderCurrentDollars() {
-    totalMessage.innerHTML = '$' + state[money];
+    totalMessage.innerHTML = '$' + state.money;
 }
 
 function renderWin() {

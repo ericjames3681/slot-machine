@@ -15,20 +15,22 @@
     
     <main class="container">
             <div id="slot1">
-                <img id="randomImage1">    
+                <img id="randomImage1" src="cherries.png">    
             </div>
             <div id="slot2">
-                <img id="randomImage2">
+                <img id="randomImage2" src="cherries.png">
             </div>
             <div id="slot3">
-                <img id="randomImage3">
+                <img id="randomImage3" src="cherries.png">
             </div>
+            <aside> 
+                <button id="spin">SPIN!</button>
+            </aside>
         </main>
-        <button id="spin">SPIN!</button>
    
         <form id="frm1">
             <input type="number" id="input" placeholder="AMOUNT TO WAGER" value="" min="5">
-            <button onclick="getDollars()">LET'S PLAY!</button>
+            <button onclick="init()">LET'S PLAY!</button>
         </form> 
 <script src="js/main.js"></script>
 </body>
