@@ -11,6 +11,7 @@ header {
     margin: 0 auto;
     margin-bottom: 20px;
     text-align: center;
+    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 h1 {
@@ -21,6 +22,7 @@ h1 {
     margin: 0 auto;
     margin-bottom: 10px;
     text-align: center;
+    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .container {
@@ -35,11 +37,12 @@ h1 {
     border-radius: 15px;
     grid-template-columns: 30% 30% 30% 9%;
     column-gap: 1%;   
+    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 div {
     background-color: rgb(255, 255, 255);
-    padding: 40px;
+    padding: 42px;
     border-radius: 15px;
     margin-bottom: 10px;
 }
@@ -47,24 +50,20 @@ img {
     height: 110px; 
     width: 95px; 
 }
-#frm1 {
-    color: white;
+#input {
+    font-size: medium;
     font-family: 'Poiret One', cursive;
     border-radius: 15px;
+    text-align: center;
     margin: 0 auto;
     padding: 30px;
-    width: 35px;
+    width: 50px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-#input {
-    font-family: 'Poiret One', cursive;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-
 }
 button {
     font-family: 'Poiret One', cursive;
     width: 55px;
     border-radius: 15px;
+    margin: 0 auto;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

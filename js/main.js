@@ -1,5 +1,5 @@
 //CONSTANTS
-const images = ['cherries.png', 'bell.png', 'leslie.png'];
+const images = ['cherries.png', 'bell.png'] ;
 const jackpot = 10;
 const win = 7;
 const bet = 5;
@@ -7,9 +7,11 @@ const bet = 5;
 // console.log(imagesArray[0]);
 
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
+const reelAudio = new Audio('415074__aghirlandaio__slot-machine-reels-sound.m4a');
 // /*----- app's state (variables) -----*/
 var state = {
-    money: 40
+    money: 0,
+    bet: 0
 };
 var slot123 = {
     '1': {
@@ -23,64 +25,51 @@ var slot123 = {
     }
 };
 
-let total = 440;
-
-
-
 /*----- cached element references -----*/
-var totalMessage = document.getElementById('input');
-console.log(totalMessage);
-// const pScreen1 = document.querySelector('#player h2');
-// const cScoreEl = document.querySelector('#computer h2');
-// const tScoreEl = document.querySelector('#middle h2');
+var totalMessage = document.getElementById('current-balance');
+var dollarInput = document.getElementById('input');
 
-// const pResultEl = document.querySelector('#player div div');
-// const cResultEl = document.querySelector('#computer div div');
 
-// const countdownEl = document.querySelector('#middle div');
-
-// var x = document.createElement("img");
 
 
 
 
 /*----- event listeners -----*/
 
-document.querySelector('button').addEventListener('click', spin);
-// document.querySelector('submit').addEventListener('click', getDollars);
+document.getElementById('spin').addEventListener('click', render);
+document.getElementById('numberBtn').addEventListener('click', getDollars);
 
 
 /*----- functions -----*/
 function init () {
     totalMessage.innerText= 'Welcome!';
-    // render();
-    state[money] = totalMessage;    
-
-    return;
+    console.log(totalMessage);
+    render();
 }
 
 function render() {
-    getDollars();
-    spin();
-    state[money] -= 5;
-    renderCurrentDollars();
-    if (total >= 5) {
+
+    if (state.money >= 5) {
         spin();
-        if (checkForWin() === true) {
-            renderWin();
-            renderCurrentDollars(); 
-        };
-    };
+    }
+    else {
+        totalMessage.innerText= 'Min bet is $5.00.';
+    }
 }
 function spin() {
-    goAudio.play();
-    renderSlots();
+    state.bet = 0;
+    state.money -= 5;
+    state.bet += 5;
+    reelAudio.play(3);
     renderCurrentDollars();
+    goAudio.play();
+    reelAudio.play();
+    renderSlots();
 }
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
         //two args time/index
-        handleTime('2,000', i);
+        handleTime(`${i}000`, i);
     }
 }
 function randomizeImg() {
@@ -90,33 +79,45 @@ function randomizeImg() {
 function renderRandomImage(x){
     var htmlImg = document.getElementById('randomImage' + x);
     htmlImg.src = randomizeImg();
-    slot123[x]= htmlImg.src;
-
+    slot123[x] = htmlImg.src;
+    
 }
-//independent function that handleTimefunction handleTime(time) {
+
 function handleTime(time, index) {
     setTimeout(() => {
         renderRandomImage(index);
+        if ( checkForWin() === true ) {
+            renderWin();
+        }
+        totalMessage.innerText = 'SPINNING...';
+        goAudio.pause();
+        renderCurrentDollars();
     }, Number(time));
 }
 
 function getDollars() {
-    state.money += document.getElementById('input').value;
-    totalMessage.innerHTML = '$ ' + state.money;
+    state.money += parseInt(dollarInput.value);
+    renderCurrentDollars();
+    dollarInput.value = '';
 }
-
+ 
 function renderCurrentDollars() {
-    totalMessage.innerHTML = '$' + state.money;
+    totalMessage.innerText= '$ ' + state.money + '.00';
 }
 
 function renderWin() {
     totalMessage.innerText = 'Winner!!!!!';
-    return console.log('yep! renderWin WORKS!!!!')
+    state.bet *= 20;
+    state.money += state.bet;
 }
 
 function checkForWin() {
     if ((slot123[3] === slot123[2]) && (slot123[1] === slot123[2])) {
-       return true;
+        return true;
     }
+    else {
+        return false;
+    }
+
 }
 
