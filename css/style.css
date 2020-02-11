@@ -25,6 +25,17 @@ h1 {
     background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+h2 {
+    border-radius: 15px;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 30px;
+    width: 350px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 .container {
     background-size: contain;
     height: 200px;
@@ -53,18 +64,21 @@ img {
 #input {
     font-size: large;
     font-family: 'Poiret One', cursive;
-    border-radius: 15px;
-    /* text-align: center; */
-    margin: 0 auto;
     padding: 10px;
-    width: 250px;
+    width: 270px;
     height: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+#numberBtn {
+    margin: 0 auto;
+    height: 20px;
+    width: 250px;
+    border-radius: 15px;
+}
 button {
     font-family: 'Poiret One', cursive;
-    width: 55px;
+    width: 30px;
     border-radius: 15px;
     margin: 0 auto;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
