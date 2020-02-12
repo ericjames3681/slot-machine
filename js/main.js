@@ -1,5 +1,5 @@
 //CONSTANTS
-const images = [ 'images/7.png' ]
+const images = [ 'images/7.png' , 'images/lemon.jpg', 'images/lemon.jpg', 'images/lemon.jpg', 'images/leslie.png', 'images/leslie.png', 'images/cherries.png', 'images/cherries.png', 'images/bell.png']
 
 
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
@@ -237,7 +237,7 @@ function clearSlotData() {
 }
 function soundOn() {
     goAudio.play();
-    setTimeout(soundOff, 4000);
+    setTimeout(soundOff, 3700);
 }
 function soundOff() {
     goAudio.pause();
