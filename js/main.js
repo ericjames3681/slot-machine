@@ -1,5 +1,5 @@
 //CONSTANTS
-const images = [ '7.png', 'cherries.png', 'lemon.jpg', 'leslie.png']
+const images = [ 'https://i.imgur.com/XFGJP0y.png', 'https://i.imgur.com/jZuL3W2.png', 'https://i.imgur.com/9z6BaiL.png', 'https://i.imgur.com/0uCk4iT.png']
 
 
 // console.log(imagesArray[0]);

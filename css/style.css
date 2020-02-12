@@ -1,5 +1,5 @@
 html { 
-    background-image: linear-gradient(to bottom right, rgb(105, 212, 105), forestgreen);
+    background-image: linear-gradient(to bottom right, rgb(150, 228, 150), rgb(15, 34, 15));
     font-family: 'Poiret One', cursive;
     height: 100vh;
 }
@@ -12,7 +12,7 @@ header {
     margin: 0 auto;
     margin-bottom: 20px;
     text-align: center;
-    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
+    background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(28, 44, 39));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 h1 {
