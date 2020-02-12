@@ -1,8 +1,6 @@
 //CONSTANTS
-const images = [ '7.png']
-const jackpot = 10;
-const win = 7;
-const bet = 5;
+const images = [ '7.png', 'cherries.png', 'lemon.jpg', 'leslie.png']
+
 
 // console.log(imagesArray[0]);
 
@@ -26,9 +24,12 @@ var slot123 = {
     }
 };
 
+
 /*----- cached element references -----*/
-var totalMessage = document.getElementById('current-balance');
-var dollarInput = document.getElementById('input');
+var totalMessageEl = document.getElementById('current-balance');
+var dollarInputEl = document.getElementById('input');
+var simpsonsGifEl = document.getElementById('gif');
+
 
 
 
@@ -41,6 +42,7 @@ var dollarInput = document.getElementById('input');
 document.getElementById('spin').addEventListener('click', render);
 document.getElementById('spinMax').addEventListener('click', renderMax);
 document.getElementById('numberBtn').addEventListener('click', getDollars);
+document.getElementById('cashout').addEventListener('click', init);
 
 
 
@@ -48,7 +50,7 @@ document.getElementById('numberBtn').addEventListener('click', getDollars);
 init();
 
 function init () {
-    totalMessage.innerText= 'Welcome!';
+    totalMessageEl.innerText= 'Welcome!';
     state = {
         money: 0,
         bet: 0,
@@ -65,7 +67,6 @@ function init () {
             imgUrl: ''
         }
     };
-
 }
 
 function render() {
@@ -74,8 +75,9 @@ function render() {
         spin();
     }
     else {
-        totalMessage.innerText= 'Min bet is $5.00.';
+        totalMessageEl.innerText= 'Add $5.00...';
     }    
+
 }
 function renderMax() {
     nan();
@@ -83,8 +85,9 @@ function renderMax() {
         spinMax();
     }
     else {
-        totalMessage.innerText= 'Max bet is $20.00.';
+        totalMessageEl.innerText= 'Add $20.00...';
     }
+
 }
 function spin() {
     state.bet = 0;
@@ -94,6 +97,8 @@ function spin() {
     goAudio.play();
     renderSlots();
     clearSlotData();
+    renderCurrentDollars();
+    goAudio.pause();
 }
 function spinMax() {
     state.betMax = 0;
@@ -102,7 +107,9 @@ function spinMax() {
     nan();
     goAudio.play();
     renderSlots();
+    renderCurrentDollars();
     clearSlotData();
+    goAudio.pause();
 }
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
@@ -115,17 +122,16 @@ function randomizeImg() {
     return image;
 }
 function renderRandomImage(x){
-    var htmlImg = document.getElementById('randomImage' + x);
-    htmlImg.src = randomizeImg();
-    slot123[x] = htmlImg.src;
+    var htmlImgEl = document.getElementById('randomImage' + x);
+    htmlImgEl.src = randomizeImg();
+    slot123[x] = htmlImgEl.src;
     
 }
 
 function handleTime(time, index) {
     setTimeout(() => {
         renderRandomImage(index);
-        // goAudio.pause();
-        totalMessage.innerText = 'SPINNING...';
+        totalMessageEl.innerText = "Spinning...";
         if (checkForWin() === true) {
             if (checkForJackpot() === true) {
                 renderJackpot();
@@ -134,24 +140,26 @@ function handleTime(time, index) {
                 renderWin();
             }
         }
-    }, Number(time));
- 
-}
+        else {
+            renderLoss();
+        }
 
+    }, Number(time));
+
+}
 function getDollars() {
     nan();
-    state.money += parseInt(dollarInput.value);
+    state.money += parseInt(dollarInputEl.value);
     renderCurrentDollars();
-    dollarInput.value = '';
+    dollarInputEl.value = '';
 }
  
 function renderCurrentDollars() {
     nan();
-    totalMessage.innerText= '$ ' + state.money + '.00';
+    totalMessageEl.innerText= '$ ' + state.money + '.00';
 }
 
 function renderWin() {
-    totalMessage.innerText = 'Winner!!!!!';
     state.bet *= 10;
     state.betMax *= 10;
     state.money += state.bet;
@@ -159,7 +167,11 @@ function renderWin() {
     state.bet = 0;
     state.betMax = 0;
     renderCurrentDollars();
-
+    clearSlotData();
+}
+function renderLoss() {
+    renderCurrentDollars();
+    clearSlotData();
 }
 
 function checkForWin() {
@@ -181,12 +193,12 @@ function checkForJackpot() {
 function nan() {
     if (isNaN(state.money) === true) {
         state.money = 0;
-        totalMessage.innerText = 'Please add more funds...';
+        totalMessageEl.innerText = 'Please add funds...';
     }
 }
 
 function renderJackpot() {
-    totalMessage.innerText = 'JACKPOT!!!';
+    totalMessageEl.innerText = 'JACKPOT!!!';
     state.bet *= 50;
     state.betMax *= 50;
     state.money += state.bet;
@@ -194,6 +206,7 @@ function renderJackpot() {
     state.bet = 0;
     state.betMax = 0;
     renderCurrentDollars();
+    clearSlotData();
 }
 
 function clearSlotData() {
@@ -208,4 +221,7 @@ function clearSlotData() {
             imgUrl: ''
         }
     };
+}
+function cashout() {
+    init();
 }
