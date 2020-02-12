@@ -6,6 +6,8 @@ const images = [ 'https://i.imgur.com/XFGJP0y.png', 'https://i.imgur.com/jZuL3W2
 
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
 const reelAudio = new Audio('337079__tieswijnen__bicycle-spokes.aiff');
+reelAudio.loop = true;
+goAudio.loop = true;
 // /*----- app's state (variables) -----*/
 var state = {
     money: '',
@@ -29,6 +31,7 @@ var slot123 = {
 var totalMessageEl = document.getElementById('current-balance');
 var dollarInputEl = document.getElementById('input');
 var simpsonsGifEl = document.getElementById('gif');
+
 
 
 
@@ -94,22 +97,19 @@ function spin() {
     state.money -= 5;
     state.bet = 5;
     nan();
-    goAudio.play();
+    soundOn();
     renderSlots();
-    // clearSlotData();
-    // renderCurrentDollars();
-    goAudio.pause();
+    
+    
 }
 function spinMax() {
     state.betMax = 0;
     state.money -= 20;
     state.betMax = 20;
     nan();
-    goAudio.play();
+    soundOn();
     renderSlots();
-    // renderCurrentDollars();
-    // clearSlotData();
-    goAudio.pause();
+
 }
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
@@ -129,21 +129,13 @@ function renderRandomImage(x){
 }
 
 function handleTime(time, index) {
+    
     setTimeout(() => {
         renderRandomImage(index);
         totalMessageEl.innerText = "Spinning...";
-        if (checkForWin() === true) {
-            if (checkForJackpot() === true) {
-                renderJackpot();
-            }
-            else {
-                renderWin();
-            }
-        }
-        else {
-            renderLoss();
-        }
     }, Number(time));
+    setTimeout(checkForWin, 3300);
+    
 }
 function getDollars() {
     nan();
@@ -151,7 +143,7 @@ function getDollars() {
     renderCurrentDollars();
     dollarInputEl.value = '';
 }
- 
+
 function renderCurrentDollars() {
     nan();
     totalMessageEl.innerText= '$ ' + state.money + '.00';
@@ -164,7 +156,7 @@ function renderWin() {
     state.money += state.betMax;
     state.bet = 0;
     state.betMax = 0;
-    setTimeout(function win() {totalMessageEl.innerText= 'Not bad, for a human...';},3500);
+    setTimeout(function win() {totalMessageEl.innerText= 'Not bad, for a human...';}, 3500);
     setTimeout(renderCurrentDollars, 4000);
     setTimeout(clearSlotData, 4500);
 }
@@ -176,18 +168,17 @@ function renderLoss() {
 
 function checkForWin() {
     if ((slot123[3] === slot123[2]) && (slot123[1] === slot123[2])) {
-        return true;
+        checkForJackpot()
+        renderWin();
     }
     else {
-        return false;
+        renderLoss();
     }
+ 
 }
 function checkForJackpot() {
-    if (slot123[1] === "file:///Users/apple/code/slot-machine/7.png") {
-        return true;
-    }
-    else {
-        return false;
+    if (slot123[1] === "https://i.imgur.com/XFGJP0y.png") {
+        renderJackpot();
     }
 }
 function nan() {
@@ -212,8 +203,8 @@ function renderJackpot() {
     state.money += state.betMax;
     state.bet = 0;
     state.betMax = 0;
-    setTimeout(renderCurrentDollars, 13000);
-    setTimeout(clearSlotData, 13000);
+    setTimeout(renderCurrentDollars, 13500);
+    setTimeout(clearSlotData, 14000);
 }
 
 function clearSlotData() {
@@ -229,6 +220,14 @@ function clearSlotData() {
         }
     };
 }
+function soundOn() {
+    goAudio.play();
+    setTimeout(soundOff, 4000);
+}
+function soundOff() {
+    goAudio.pause();
+}
+
 function cashout() {
     init();
 }
