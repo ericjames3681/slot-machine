@@ -70,8 +70,8 @@ section {
     font-weight: bolder;
     display: flex;
     margin: 0 auto; 
-    width: 700px;
-    justify-content: space-evenly;
+    /* width: 700px; */
+    justify-content: space-between;
     border-radius: 15px;
 }
 #input {

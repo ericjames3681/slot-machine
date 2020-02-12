@@ -96,8 +96,8 @@ function spin() {
     nan();
     goAudio.play();
     renderSlots();
-    clearSlotData();
-    renderCurrentDollars();
+    // clearSlotData();
+    // renderCurrentDollars();
     goAudio.pause();
 }
 function spinMax() {
@@ -107,8 +107,8 @@ function spinMax() {
     nan();
     goAudio.play();
     renderSlots();
-    renderCurrentDollars();
-    clearSlotData();
+    // renderCurrentDollars();
+    // clearSlotData();
     goAudio.pause();
 }
 function renderSlots () {
@@ -143,9 +143,7 @@ function handleTime(time, index) {
         else {
             renderLoss();
         }
-
     }, Number(time));
-
 }
 function getDollars() {
     nan();
@@ -166,12 +164,14 @@ function renderWin() {
     state.money += state.betMax;
     state.bet = 0;
     state.betMax = 0;
-    renderCurrentDollars();
-    clearSlotData();
+    setTimeout(function win() {totalMessageEl.innerText= 'Not bad, for a human...';},3500);
+    setTimeout(renderCurrentDollars, 4000);
+    setTimeout(clearSlotData, 4500);
 }
 function renderLoss() {
-    renderCurrentDollars();
-    clearSlotData();
+    setTimeout(function loss() {totalMessageEl.innerText= 'Sorry! Spin again!';}, 3500);
+    setTimeout(renderCurrentDollars, 4000);
+    setTimeout(clearSlotData, 4500);
 }
 
 function checkForWin() {
@@ -198,15 +198,22 @@ function nan() {
 }
 
 function renderJackpot() {
-    totalMessageEl.innerText = 'JACKPOT!!!';
+    for (var i = 4; i <=13; i++) {
+        if (i%2 === 0) {
+            setTimeout(function jp1() {totalMessageEl.innerText = 'JACKPOT!!!';}, `${i}000`);
+        }
+        else {
+            setTimeout(function jp2() {totalMessageEl.innerText = 'YES!!!';}, `${i}000`);
+        }
+    }
     state.bet *= 50;
     state.betMax *= 50;
     state.money += state.bet;
     state.money += state.betMax;
     state.bet = 0;
     state.betMax = 0;
-    renderCurrentDollars();
-    clearSlotData();
+    setTimeout(renderCurrentDollars, 13000);
+    setTimeout(clearSlotData, 13000);
 }
 
 function clearSlotData() {
