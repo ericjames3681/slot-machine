@@ -1,4 +1,4 @@
-//CONSTANTS
+
 const lookupPics = [ 0, 1, 2, 3, 4, 5, 6, 7]
 
 const IMAGES = {
@@ -10,12 +10,11 @@ const IMAGES = {
     '5': 'images/leslie.png',
     '6': 'images/leslie.png',
     '7': 'images/leslie.png',
-    
 }
 
 const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
 goAudio.loop = true;
-// /*----- app's state (variables) -----*/
+
 var state = {
     money: '',
     bet: '',
@@ -34,44 +33,27 @@ var slot123 = {
 };
 var jackpot = 0;
 
-/*----- cached element references -----*/
 var totalMessageEl = document.getElementById('current-balance');
 var dollarInputEl = document.getElementById('input');
 var slot1 = document.getElementById('randomImage1');
 var slot2 = document.getElementById('randomImage2');
 var slot3 = document.getElementById('randomImage3');
 
-
-/*----- event listeners -----*/
-
 document.getElementById('spin').addEventListener('click', render);
 document.getElementById('spinMax').addEventListener('click', renderMax);
 document.getElementById('numberBtn').addEventListener('click', getDollars);
 document.getElementById('cashout').addEventListener('click', init);
 
-
-
-/*----- functions -----*/
 init();
 
 function init () {
-    totalMessageEl.innerText= 'Welcome!';
+    totalMessageEl.innerText= 'Welcome! Add funds below...';
     state = {
         money: 0,
         bet: 0,
         betMax: 0
     };
-    slot123 = {
-        '1': {
-            imgUrl: ''
-        },
-        '2': {
-            imgUrl: ''
-        },
-        '3': {
-            imgUrl: ''
-        }
-    };
+    clearSlotData();
 }
 
 function render() {
@@ -91,8 +73,7 @@ function renderMax() {
     }
     else {
         totalMessageEl.innerText= 'Add $20.00...';
-    }
-    
+    }   
 }
 function spin() {
     jackpot = 0;
@@ -103,12 +84,8 @@ function spin() {
     nan();
     soundOn();
     totalMessageEl.innerText = "Spinning...";
-    slot1.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    slot2.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    slot3.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    renderSlots();
-    
-    
+    preSpin();
+    renderSlots();   
 }
 function spinMax() {
     jackpot = 0;
@@ -119,21 +96,16 @@ function spinMax() {
     nan();
     soundOn();
     totalMessageEl.innerText = "Spinning...";
-    slot1.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    slot2.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    slot3.src = "https://media2.giphy.com/media/26BRFrAgGF6wtebio/giphy.gif?cid=790b761125b6a53b5d2aaef2ae7c6198050d926de8652f49&rid=giphy.gif";
-    renderSlots();
-    
+    preSpin();
+    renderSlots();   
 }
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
-        //two args time/index
         handleTime(`${i}000`, i);
     }  
 }
 function randomizeImg() {
     var newRand = getRandomIdx();
-    //newRand = 0; if you want to check JACKPOT, newRand = 1 if you want to check BELLS
     if (lookupPics[newRand]=== 0){
         jackpot++;
     }
@@ -219,7 +191,7 @@ function nan() {
 }
 function renderBells() {
     totalMessageEl.style.color = "white";
-    totalMessageEl.innerText= 'BOOM!';
+    totalMessageEl.innerText= 'BOOM! 30X WINNER!';
     state.bet *= 3;
     state.betMax *= 3;
     setTimeout(renderWin, 3000);
@@ -237,20 +209,27 @@ function renderJackpot() {
     for (var i = 0; i <=8; i++) {
         if (i%2 === 0) {
             totalMessageEl.style.color = "red";
-            setTimeout(function jp1() {totalMessageEl.innerText = 'JACKPOT!!!';}, `${i}000`);
+            setTimeout(function jp1() {totalMessageEl.innerText = 'JACKPOT!!! 50X WINNER!!!';}, `${i}000`);
         }
         else {
-            setTimeout(function jp2() {totalMessageEl.innerText = 'YES!!!';}, `${i}000`);
+            setTimeout(function jp2() {totalMessageEl.innerText = 'YES!!! MONEY MONEY MONEY...';}, `${i}000`);
         }
     }
 
 }
 
 function winDisplay() {
-    slot1.src="https://media1.giphy.com/media/ADgfsbHcS62Jy/giphy.gif?cid=790b7611901ebc98ceaffef26d291e775b0d62c9b86c72ef&rid=giphy.gif"
-    slot2.src="https://media1.giphy.com/media/ADgfsbHcS62Jy/giphy.gif?cid=790b7611901ebc98ceaffef26d291e775b0d62c9b86c72ef&rid=giphy.gif"
-    slot3.src="https://media1.giphy.com/media/ADgfsbHcS62Jy/giphy.gif?cid=790b7611901ebc98ceaffef26d291e775b0d62c9b86c72ef&rid=giphy.gif"
+    slot1.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
+    slot2.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
+    slot3.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
+    setTimeout(preSpin, 3000);
 }
+function preSpin() {
+    slot1.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
+    slot2.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
+    slot3.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
+}
+
 function normalTextColor() {
     totalMessageEl.style.color = "black";
 }

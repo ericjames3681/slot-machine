@@ -56,14 +56,18 @@ h2 {
 }
 
 div {
+    margin-top: 10%;
+    height: 70%;
     background-color: rgb(255, 255, 255);
-    padding: 41px;
+    padding: 12px;
     border-radius: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 10%;
+    margin-left: 3%;
 }
 img {
-    height: 113px; 
-    width: 85px; 
+    margin-top: 3%;
+    height: 90%; 
+    width: 100%; 
 }
 section {
     padding: 10px;
@@ -128,29 +132,146 @@ button:hover {
     background-color: black;
     color: white;
 }
-@media screen and (max-width: 700px) {
-    html {
-        background: white;
+@media screen and (max-width: 400px) {
+    html { 
+        background-image: linear-gradient(to bottom right, rgb(150, 228, 150), rgb(15, 34, 15));
+        font-family: 'Poiret One', cursive;
+        height: 100vh;
     }
     header {
-        width: 300px;
+        height: 30%;
+        font-size: x-large;
+        width: 90%;
+    }
+    h1 {
+        width: 90%;
+        height: 20%;
+        font-size: larger;
+        margin-bottom: 10%;
+    }
+    h2 {
+        width: 90%;
+        font-size: larger;
+        margin-bottom: 5%;
     }
     .container {
         background-size: contain;
-        height: 200px;
+        height: 160px;
         width: 90%;
         margin: 0 auto;
-        margin-bottom: 10px;
+        margin-bottom: 5%;
         background-color: gainsboro;
         display: grid;
         border: 1px solid black;
         border-radius: 15px;
-        grid-template-columns: 30% 30% 30% 9%;
+        grid-template-columns: 28% 28% 28% 12%;
         column-gap: 1%;   
         background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     section {
         width: 92%;
+    }
+    div {
+        margin-top: 10%;
+        height: 70%;
+        background-color: rgb(255, 255, 255);
+        padding: 12px;
+        border-radius: 15px;
+        margin-bottom: 10%;
+    }
+    img {
+        margin-top: 8%;
+        height: 90%; 
+        width: 100%; 
+    }
+    #spin {
+        font-weight: bolder;
+        height: 48%;
+        width: 100%;
+        margin-bottom: 3px;
+    }
+    #spinMax {
+        font-weight: bolder;
+        height: 48%;
+        width: 100%;
+    }
+    #cashout {
+        margin-right: 2px;
+    }
+    #numberBtn {
+        margin-left: 2px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html { 
+        background-image: linear-gradient(to bottom right, rgb(150, 228, 150), rgb(15, 34, 15));
+        font-family: 'Poiret One', cursive;
+        height: 100vh;
+    }
+    header {
+        height: 30%;
+        font-size: x-large;
+        width: 90%;
+    }
+    h1 {
+        width: 90%;
+        height: 20%;
+        font-size: larger;
+        margin-bottom: 10%;
+    }
+    h2 {
+        width: 90%;
+        font-size: larger;
+        margin-bottom: 5%;
+    }
+    .container {
+        background-size: contain;
+        height: 160px;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 5%;
+        background-color: gainsboro;
+        display: grid;
+        border: 1px solid black;
+        border-radius: 15px;
+        grid-template-columns: 28% 28% 28% 12%;
+        column-gap: 1%;   
+        background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    section {
+        width: 92%;
+    }
+    div {
+        margin-top: 10%;
+        height: 70%;
+        background-color: rgb(255, 255, 255);
+        padding: 12px;
+        border-radius: 15px;
+        margin-bottom: 10%;
+    }
+    img {
+        margin-top: 8%;
+        height: 90%; 
+        width: 100%; 
+    }
+    #spin {
+        font-weight: bolder;
+        height: 48%;
+        width: 100%;
+        margin-bottom: 3px;
+    }
+    #spinMax {
+        font-weight: bolder;
+        height: 48%;
+        width: 100%;
+    }
+    #cashout {
+        margin-right: 2px;
+    }
+    #numberBtn {
+        margin-left: 2px;
     }
 }
