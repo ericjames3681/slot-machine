@@ -124,3 +124,33 @@ button {
     background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+button:hover {
+    background-color: black;
+    color: white;
+}
+@media screen and (max-width: 700px) {
+    html {
+        background: white;
+    }
+    header {
+        width: 300px;
+    }
+    .container {
+        background-size: contain;
+        height: 200px;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        background-color: gainsboro;
+        display: grid;
+        border: 1px solid black;
+        border-radius: 15px;
+        grid-template-columns: 30% 30% 30% 9%;
+        column-gap: 1%;   
+        background-image: linear-gradient(to bottom right, rgb(200, 223, 200), rgb(87, 139, 87));
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    section {
+        width: 92%;
+    }
+}
