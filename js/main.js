@@ -225,9 +225,9 @@ function winDisplay() {
     setTimeout(preSpin, 3000);
 }
 function preSpin() {
-    slot1.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
-    slot2.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
-    slot3.src = "https://i.giphy.com/media/26BRFrAgGF6wtebio/giphy.webp";
+    slot1.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
+    slot2.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
+    slot3.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
 }
 
 function normalTextColor() {
