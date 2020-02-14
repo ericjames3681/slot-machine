@@ -105,6 +105,11 @@ function preSpinDisplay() {
     slot2.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
     slot3.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
 }
+function oldRow() {
+    slot1.src = slot123[1];
+    slot2.src = slot123[2];
+    slot3.src = slot123[3];
+}
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
         handleTime(`${i}000`, i);
@@ -128,14 +133,14 @@ function renderRandomImage(x){
 }
 function getRandomIdx() {
     return Math.floor(Math.random() * 7);
-  }
+}
 function handleTime(time, index) {
     setTimeout(checkForWin, 3500);
     setTimeout(() => {
-    renderRandomImage(index);
+        renderRandomImage(index);
     }, Number(time));
 }
-    
+
 function getDollars() {
     nan();
     state.money += parseInt(dollarInputEl.value);
@@ -198,11 +203,17 @@ function nan() {
     }
 }
 function renderBells() {
+    winDisplay();
     totalMessageEl.style.color = "white";
     totalMessageEl.innerText= 'BOOM! 30X WINNER!';
     state.bet *= 3;
     state.betMax *= 3;
-    setTimeout(renderWin, 3000);
+    state.money += state.bet;
+    state.money += state.betMax;
+    state.bet = 0;
+    state.betMax = 0;
+    setTimeout(renderCurrentDollars, 2000);
+    setTimeout(normalTextColor, 2000);
 }
 
 function renderJackpot() {
@@ -223,14 +234,14 @@ function renderJackpot() {
             setTimeout(function jp2() {totalMessageEl.innerText = 'YES!!! MONEY MONEY MONEY...';}, `${i}000`);
         }
     }
-
+    
 }
 
 function winDisplay() {
     slot1.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
     slot2.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
     slot3.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
-    setTimeout(preSpinDisplay, 3000);
+    setTimeout(oldRow, 3000);
 }
 
 function normalTextColor() {
