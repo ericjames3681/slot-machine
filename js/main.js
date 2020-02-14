@@ -3,7 +3,7 @@ const lookupPics = [ 0, 1, 2, 3, 4, 5, 6, 7]
 
 const IMAGES = {
     '0': 'images/7.png',
-    '1' : 'images/bell.png',
+    '1': 'images/bell.png',
     '2': 'images/bell.png',
     '3': 'images/lemon.jpg',
     '4': 'images/lemon.jpg',
@@ -12,8 +12,10 @@ const IMAGES = {
     '7': 'images/leslie.png',
 }
 
-const goAudio = new Audio('118239__pierrecartoons1979__slot-machine-phrygian.mp3');
+const goAudio = new Audio('one_beep.wav');
 goAudio.loop = true;
+const coinAudio = new Audio('coinInput.wav');
+const winAudio = new Audio('win.wav');
 
 var state = {
     money: '',
@@ -32,6 +34,8 @@ var slot123 = {
     }
 };
 var jackpot = 0;
+var bell = 0;
+
 
 var totalMessageEl = document.getElementById('current-balance');
 var dollarInputEl = document.getElementById('input');
@@ -76,28 +80,30 @@ function renderMax() {
     }   
 }
 function spin() {
-    jackpot = 0;
-    bell = 0;
     state.bet = 0;
     state.money -= 5;
     state.bet = 5;
-    nan();
-    soundOn();
-    totalMessageEl.innerText = "Spinning...";
     preSpin();
-    renderSlots();   
 }
 function spinMax() {
-    jackpot = 0;
-    bell = 0;
     state.betMax = 0;
     state.money -= 20;
     state.betMax = 20;
-    nan();
-    soundOn();
-    totalMessageEl.innerText = "Spinning...";
     preSpin();
+}
+function preSpin() {
+    jackpot = 0;
+    bell = 0;
+    nan();
+    totalMessageEl.innerText = "Spinning...";
+    soundOn();
+    preSpinDisplay();
     renderSlots();   
+}
+function preSpinDisplay() {
+    slot1.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
+    slot2.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
+    slot3.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
 }
 function renderSlots () {
     for (let i = 1; i <= 3; i++){
@@ -135,6 +141,7 @@ function getDollars() {
     state.money += parseInt(dollarInputEl.value);
     renderCurrentDollars();
     dollarInputEl.value = '';
+    coinAudio.play();
 }
 
 function renderCurrentDollars() {
@@ -165,6 +172,7 @@ function renderLoss() {
 function checkForWin() {
     if ((slot123[3] === slot123[2]) && (slot123[1] === slot123[2])) {
         checkForJackpot();
+        winAudio.play();
     }
     else {
         renderLoss();
@@ -222,12 +230,7 @@ function winDisplay() {
     slot1.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
     slot2.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
     slot3.src="https://kidfromthe6ix.files.wordpress.com/2014/09/630827963.gif?w=468&h=257&crop=1&zoom=2";
-    setTimeout(preSpin, 3000);
-}
-function preSpin() {
-    slot1.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
-    slot2.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
-    slot3.src = "https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif";
+    setTimeout(preSpinDisplay, 3000);
 }
 
 function normalTextColor() {
@@ -249,7 +252,7 @@ function clearSlotData() {
 }
 function soundOn() {
     goAudio.play();
-    setTimeout(soundOff, 3700);
+    setTimeout(soundOff, 3200);
 }
 function soundOff() {
     goAudio.pause();
