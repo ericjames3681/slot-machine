@@ -17,12 +17,12 @@ goAudio.loop = true;
 const coinAudio = new Audio('coinInput.wav');
 const winAudio = new Audio('win.wav');
 
-var state = {
+let state = {
     money: '',
     bet: '',
     betMax: ''
 };
-var slot123 = {
+let slot123 = {
     '1': {
         imgUrl: ''
     },
@@ -33,15 +33,15 @@ var slot123 = {
         imgUrl: ''
     }
 };
-var jackpot = 0;
-var bell = 0;
+let jackpot = 0;
+let bell = 0;
 
 
-var totalMessageEl = document.getElementById('current-balance');
-var dollarInputEl = document.getElementById('input');
-var slot1 = document.getElementById('randomImage1');
-var slot2 = document.getElementById('randomImage2');
-var slot3 = document.getElementById('randomImage3');
+let totalMessageEl = document.getElementById('current-balance');
+let dollarInputEl = document.getElementById('input');
+let slot1 = document.getElementById('randomImage1');
+let slot2 = document.getElementById('randomImage2');
+let slot3 = document.getElementById('randomImage3');
 
 document.getElementById('spin').addEventListener('click', render);
 document.getElementById('spinMax').addEventListener('click', renderMax);
