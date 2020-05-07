@@ -58,6 +58,8 @@ h2 {
 }
 p {
   color: white;
+  justify-content: center;
+  margin: 0 auto;
 }
 .container {
   background-size: contain;
