@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Slot-Machine</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel=”shortcut icon” type=”image/x-icon” href=”images/7.png”>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
     <script defer src="js/main.js"></script>
-    
-    
-</head>
-<body>
+  </head>
+  <body>
     <header>Eric's Slot-Machine</header>
-    <h1 id="current-balance">WELCOME!<br/>ADD FUNDS BELOW</h1>
-    <h2>3 in a row = bet X 10<br/>Triple Bells = Bet X 30<br/>Triple 7s = Bet X 50</h2>
+    <h1 id="current-balance">WELCOME!<br />ADD FUNDS BELOW</h1>
+    <h2>
+      3 in a row = bet X 10<br />Triple Bells = Bet X 30<br />Triple 7s = Bet X
+      50
+    </h2>
 
     <main class="container">
-            <div id="slot1">
-                <img id="randomImage1" src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif">    
-            </div>
-            <div id="slot2">
-                <img id="randomImage2" src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif">
-            </div>
-            <div id="slot3">
-                <img id="randomImage3" src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif">
-            </div>
-            <aside> 
-                <button id="spin">Min Bet: $5</button>
-                <button id="spinMax">Max Bet: $20</button>
-            </aside>
-        </main>
-            <input type="number" id="input" placeholder="AMOUNT TO WAGER" value="" min="5">
-        <section>
-                <button id="cashout">CASHOUT</button>
-                <button id="numberBtn">ADD FUNDS</button>
-        </section>
-</body>
+      <div id="slot1">
+        <img
+          id="randomImage1"
+          src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif"
+        />
+      </div>
+      <div id="slot2">
+        <img
+          id="randomImage2"
+          src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif"
+        />
+      </div>
+      <div id="slot3">
+        <img
+          id="randomImage3"
+          src="https://media1.tenor.com/images/a8937d9bc6ddda79dc00e86f10cca1b8/tenor.gif"
+        />
+      </div>
+      <aside>
+        <button id="spin">Min Bet: $5</button>
+        <button id="spinMax">Max Bet: $20</button>
+      </aside>
+    </main>
+    <input
+      type="number"
+      id="input"
+      placeholder="AMOUNT TO WAGER"
+      value=""
+      min="5"
+    />
+    <section>
+      <button id="cashout">CASHOUT</button>
+      <button id="numberBtn">ADD FUNDS</button>
+    </section>
+  </body>
 </html>
-        
-
-
